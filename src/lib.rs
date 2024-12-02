@@ -4,14 +4,17 @@ use std::path::PathBuf;
 pub struct Input {
     pub prob_id: u8,
     pub dataset: PathBuf,
+    pub content: String,
 }
 
 impl Input {
     pub fn init(prob_id: u8, dataset: String) -> Option<Input> {
-        return Some(Input {
+        let path = PathBuf::from(format!("./inputs/{prob_id}_{dataset}"));
+        Some(Input {
             prob_id,
             dataset: PathBuf::from(format!("./inputs/{prob_id}_{dataset}")),
-        });
+            content: fs::read_to_string(path).unwrap(),
+        })
     }
 
     pub fn load_content(&self) -> Option<String> {
@@ -19,6 +22,6 @@ impl Input {
             Ok(content) => Some(content),
             Err(_) => None,
         };
-        return None;
+        None
     }
 }

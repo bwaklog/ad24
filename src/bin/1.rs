@@ -1,16 +1,14 @@
 use ad24::Input;
-use std::{collections::HashMap, fs};
+use std::collections::HashMap;
 
 fn main() {
     let input_data = Input::init(1, std::env::args().nth(1).unwrap()).unwrap();
 
-    let content = fs::read_to_string(input_data.dataset).expect("failed to read contents");
-
     let mut left: Vec<i32> = Vec::with_capacity(1000);
     let mut right: Vec<i32> = Vec::with_capacity(1000);
 
-    for line in content.lines() {
-        if line.len() != 0 {
+    for line in input_data.content.lines() {
+        if !line.is_empty() {
             let mut split_lines = line.split("   ").map(|x| x.trim().parse().unwrap());
             left.push(split_lines.next().unwrap());
             right.push(split_lines.next().unwrap());
