@@ -51,12 +51,9 @@ fn check_gradient(record: Vec<i32>) -> bool {
     for i in 1..record.len() {
         let diff = record[i] - record[i - 1];
         if (diff < 0) ^ decreasing || !(1..=3).contains(&diff.abs()) {
-            // println!("unsafe {:?}", record);
             return false;
         }
     }
-
-    // println!("safe {:?}", record);
     true
 }
 
@@ -66,9 +63,6 @@ fn check_gradient_unsafe(record: Vec<i32>) -> bool {
     for i in 1..record.len() {
         let diff = record[i] - record[i - 1];
         if (diff < 0) ^ decreasing || !(1..=3).contains(&diff.abs()) {
-            // print!("{:?} | removing {} => ", record, record[i - 1]);
-            // stdout().flush().unwrap();
-
             let mut dup1 = record.clone();
             let mut dup2 = record.clone();
 

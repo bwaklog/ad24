@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DAY=$(gum choose {1..2})
+DAY=$(gum choose {1..3})
 DATASET=$(gum choose "mini" "large")
 OPTION=$(gum choose "bench" "run" "samply")
 
